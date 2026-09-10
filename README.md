@@ -28,7 +28,15 @@ Local browser checks use installed Google Chrome. CI installs Playwright Chromiu
 
 `npm run build` creates `dist/`, a static site with relative URLs and no runtime dependencies or remote fonts. It can be hosted at the root of a domain or under a repository path.
 
-After reviewing the site, push it to your GitHub repository and choose **Settings > Pages > Build and deployment > Source: GitHub Actions**. The included workflow tests and builds pull requests, and deploys successful builds on `main`. No repository has been created or pushed by this project setup.
+The deployment URL is https://yfguo.github.io/superpowers-explained/. The included workflow tests and builds pull requests, checks the Pages configuration, and deploys successful builds on `main`.
+
+For a new repository, enable Pages once under **Settings > Pages > Build and deployment > Source: GitHub Actions** before deploying. The repository must be public or use a GitHub plan that supports Pages for private repositories. Uploading a Pages artifact alone does not enable hosting. With repository administration access, the equivalent CLI setup is:
+
+```sh
+gh api --method POST repos/OWNER/REPO/pages -f build_type=workflow
+```
+
+If a deployment failed because Pages was not enabled, enable it and re-run the failed workflow jobs. The deployment workflow uses the built-in GitHub token; no additional deployment secret is needed.
 
 ## Content and provenance
 
