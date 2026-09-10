@@ -1,0 +1,19 @@
+{
+  "name": "superpowers-explained",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "test": "npm run build && node --test tests/site.test.mjs",
+    "test:browser": "playwright test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "marked": "^18.0.12"
+  }
+}
